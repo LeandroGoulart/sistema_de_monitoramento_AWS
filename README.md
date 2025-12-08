@@ -1,4 +1,4 @@
-# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" width="28"/> Monitoramento de Site com AWS, CloudWatch, SNS e Grafana
+# Monitoramento de Site com AWS, CloudWatch, SNS e Grafana
 
 Projeto acadêmico focado em **observabilidade, monitoramento e alertas automáticos de disponibilidade de sites na nuvem**, usando serviços da **AWS integrados ao Grafana**.
 
@@ -6,7 +6,7 @@ Sistema caiu? O alerta chega. Sem desculpa. Sem atraso.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/475671/target.svg" width="22"/> Objetivo do Projeto
+## Objetivo do Projeto
 
 Criar uma solução que:
 
@@ -19,7 +19,7 @@ Criar uma solução que:
 
 ---
 
-## <img src="https://www.svgrepo.com/show/408384/bug-error-security.svg" width="22"/> O Problema que Este Projeto Resolve
+## O Problema que Este Projeto Resolve
 
 Sites caem. Sempre.
 
@@ -35,7 +35,7 @@ Esse projeto elimina o escuro. Tudo vira dado.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/338877/network-protection.svg" width="22"/> Arquitetura da Solução (Visão Geral)
+## Arquitetura da Solução (Visão Geral)
 
 Fluxo do sistema:
 
@@ -50,7 +50,7 @@ Nada mágico. Só engenharia bem feita.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/354119/cloud-security.svg" width="22"/> Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **AWS EC2** – Hospedagem
 - **AWS CloudWatch** – Métricas e alarmes
@@ -62,7 +62,7 @@ Nada mágico. Só engenharia bem feita.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/293553/shield-security.svg" width="22"/> O Que o Sistema Monitora
+## O Que o Sistema Monitora
 
 - Status do site (UP/DOWN)
 - Tempo de resposta
@@ -74,7 +74,7 @@ Aqui não tem opinião. Só número.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/373594/bell-notification.svg" width="22"/> Como Funcionam os Alertas
+## Como Funcionam os Alertas
 
 Quando o site:
 
@@ -92,7 +92,7 @@ Monitoramento sem alerta é decoração.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/354109/dashboard.svg" width="22"/> Visualização no Grafana
+## Visualização no Grafana
 
 Painel mostra:
 
@@ -105,7 +105,7 @@ Cliente vê problema depois. Você vê antes.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/376321/test-tube-lab.svg" width="22"/> Ambiente de Testes
+## Ambiente de Testes
 
 - Conta AWS educacional
 - Testes locais
@@ -117,7 +117,7 @@ Projeto de verdade. Nada de teatrinho.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/430786/group-team.svg" width="22"/> Integrantes do Grupo
+## Integrantes do Grupo
 
 Grupo 04:
 
@@ -130,7 +130,7 @@ Grupo 04:
 
 ---
 
-## <img src="https://www.svgrepo.com/show/375531/book-stack.svg" width="22"/> O Que Foi Aprendido
+## O Que Foi Aprendido
 
 - Observabilidade na prática
 - Métricas reais na AWS
@@ -142,7 +142,7 @@ Depois disso, projeto sem monitoramento parece piada.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/491978/rocket-launch.svg" width="22"/> Próximos Passos
+## Próximos Passos
 
 - Monitorar múltiplos sites
 - Alertas no WhatsApp/Telegram
@@ -154,7 +154,7 @@ Sistema bom cresce.
 
 ---
 
-## <img src="https://www.svgrepo.com/show/384674/folder-structure.svg" width="22"/> Estrutura do Repositório
+## Estrutura do Repositório
 
 ```bash
 /docs        -> documentação
