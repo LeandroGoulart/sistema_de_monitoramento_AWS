@@ -1,0 +1,112 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Template CloudFormation para implementar infraestrutura de laboratório
+  com:
+  * Bucket S3 com site estático
+  * Application Load Balancer
+  * Auto Scaling Group (2-5 instâncias) rodando um servidor HTTP simples
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    Description: Tipo de instância EC2 (gratuito: t2.micro / t3.micro)
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Par de chaves para SSH nas instâncias
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC onde serão criados os recursos (use a VPC padrão)
+  Subnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Subnets públicas para o ELB e AutoScaling
+
+Resources:
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "monitoramento-site-${AWS::AccountId}"
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+  WebSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP and SSH access
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  LaunchConfiguration:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      ImageId: !Ref LatestAmiId
+      InstanceType: !Ref InstanceType
+      SecurityGroups: [!Ref WebSecurityGroup]
+      KeyName: !Ref KeyName
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl enable httpd
+          systemctl start httpd
+          echo "Olá do servidor web!" > /var/www/html/index.html
+
+  AutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier: !Ref Subnets
+      LaunchConfigurationName: !Ref LaunchConfiguration
+      MinSize: '2'
+      MaxSize: '5'
+      DesiredCapacity: '2'
+      TargetGroupARNs:
+        - !Ref WebTargetGroup
+      Tags:
+        - Key: Name
+          Value: web-server-lab
+          PropagateAtLaunch: true
+
+  WebTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      VpcId: !Ref VpcId
+      Protocol: HTTP
+      Port: 80
+      HealthCheckProtocol: HTTP
+      HealthCheckPath: /
+      TargetType: instance
+
+  WebLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Subnets: !Ref Subnets
+      SecurityGroups: [!Ref WebSecurityGroup]
+      Scheme: internet-facing
+
+  HTTPListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref WebLoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref WebTargetGroup
+
+Outputs:
+  LoadBalancerDNS:
+    Description: DNS name of the load balancer
+    Value: !GetAtt WebLoadBalancer.DNSName
+  WebsiteURL:
+    Description: Endpoint do bucket S3 com site estático
+    Value: !GetAtt SiteBucket.WebsiteURL
