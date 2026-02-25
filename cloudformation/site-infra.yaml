@@ -18,8 +18,11 @@ Parameters:
     Type: AWS::EC2::VPC::Id
     Description: VPC onde serão criados os recursos (use a VPC padrão)
   Subnets:
-    Type: List<AWS::EC2::Subnet::Id>
+    Type: "List<AWS::EC2::Subnet::Id>"
     Description: Subnets públicas para o ELB e AutoScaling
+  LatestAmiId:
+    Type: AWS::EC2::Image::Id
+    Description: ID da AMI (ex: Amazon Linux 2) que será usada nas instâncias
 
 Resources:
   SiteBucket:
