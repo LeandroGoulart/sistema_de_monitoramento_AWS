@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoramento AWS - Projeto Final</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Monitoramento AWS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#arquitetura">Arquitetura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tecnologias">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="metrics.html">Métricas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container text-center">
+            <h1>🚀 Sistema de Monitoramento de Disponibilidade AWS</h1>
+            <p class="lead">Projeto Final - AWS re/Start | Monitoramento com Observabilidade e IA</p>
+            <img src="../assets/banner-tecnologias.png" alt="Banner Tecnologias" class="img-fluid mt-4" style="max-width: 600px;">
+        </div>
+    </section>
+
+    <section id="sobre" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">📌 Visão Geral</h2>
+            <p class="text-center">Este projeto implementa um sistema de monitoramento de disponibilidade de um site, utilizando AWS CloudWatch, Alarmes, Grafana e Inteligência Artificial, com foco educacional e aplicação prática em cenários reais de mercado.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>🎯 Problema que Resolve</h4>
+                    <p>Sistemas digitais precisam estar disponíveis 24/7. Sem monitoramento, falhas só são percebidas quando usuários reclamam. Este projeto cria alertas automáticos e inteligentes.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>🔍 Observabilidade</h4>
+                    <p>Baseado em métricas, logs e alertas para entender o sistema em tempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="arquitetura" class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">🧱 Arquitetura da Solução</h2>
+            <img src="../assets/arquitetura-fluxo.png" alt="Fluxo de Arquitetura" class="img-fluid mb-4">
+            <p>O fluxo inclui EventBridge para agendamento, Lambda para testes, CloudWatch para métricas, IA para análise, SNS para notificações e Grafana para dashboards.</p>
+        </div>
+    </section>
+
+    <section id="tecnologias" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">🛠️ Tecnologias Utilizadas</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">AWS Services</h5>
+                            <p class="card-text">CloudWatch, Lambda, SNS, EventBridge</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Grafana</h5>
+                            <p class="card-text">Visualização de métricas em tempo real</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Inteligência Artificial</h5>
+                            <p class="card-text">Análise de padrões e alertas inteligentes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2026 Projeto AWS re/Start - Grupo 04</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

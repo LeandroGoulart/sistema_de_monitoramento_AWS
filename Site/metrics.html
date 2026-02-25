@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas AWS - Sistema de Monitoramento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .section {
+            padding: 60px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Monitoramento AWS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="metrics.html">Métricas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">📊 Métricas da AWS</h2>
+            <p class="text-center">Visualização das métricas de disponibilidade coletadas via CloudWatch e exibidas no Grafana.</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Disponibilidade do Site</h5>
+                            <canvas id="availabilityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tempo de Resposta</h5>
+                            <canvas id="responseTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Alertas Recentes</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">⚠️ Gravidade: Alta - Site indisponível há 3 minutos</li>
+                                <li class="list-group-item">ℹ️ Gravidade: Baixa - Tempo de resposta elevado</li>
+                                <li class="list-group-item">✅ Sistema operacional normalmente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p>Para visualização completa, acesse o <a href="#" target="_blank">Dashboard Grafana</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2026 Projeto AWS re/Start - Grupo 04</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dados simulados para os gráficos
+        const availabilityData = {
+            labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+            datasets: [{
+                label: 'Disponibilidade (%)',
+                data: [100, 98, 100, 95, 100, 100],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        const responseTimeData = {
+            labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+            datasets: [{
+                label: 'Tempo de Resposta (ms)',
+                data: [200, 250, 180, 300, 220, 190],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
+            }]
+        };
+
+        // Criar gráficos
+        new Chart(document.getElementById('availabilityChart'), {
+            type: 'line',
+            data: availabilityData,
+        });
+
+        new Chart(document.getElementById('responseTimeChart'), {
+            type: 'line',
+            data: responseTimeData,
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
